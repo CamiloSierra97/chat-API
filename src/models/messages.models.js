@@ -16,8 +16,8 @@ const Messages = db.define("messages", {
     field: "user_id",
     references: {
       key: "id",
-      model: Users,
-    },
+      model: Users
+    }
   },
   conversationId: {
     type: DataTypes.UUID,
@@ -25,8 +25,8 @@ const Messages = db.define("messages", {
     field: "conversation_id",
     references: {
       key: "id",
-      model: Conversations,
-    },
+      model: Conversations
+    }
   },
   message: {
     type: DataTypes.STRING,
