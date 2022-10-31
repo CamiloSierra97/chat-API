@@ -17,4 +17,19 @@ router
     conversationServices.createConversation
   );
 
+router
+  .route("/:conversation_id")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    conversationServices.getConversationById
+  )
+  .patch(
+    passport.authenticate("jwt", { session: false }),
+    conversationServices.updateConversation
+  )
+  .delete(
+    passport.authenticate("jwt", { session: false }),
+    conversationServices.deleteConversation
+  );
+
 module.exports = router;

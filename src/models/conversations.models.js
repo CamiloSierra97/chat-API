@@ -14,7 +14,7 @@ const Conversations = db.define("conversations", {
     allowNull: false,
   },
   imageUrl: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     defaultValue: null,
   },
   createdBy: {
