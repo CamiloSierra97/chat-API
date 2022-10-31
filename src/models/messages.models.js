@@ -19,7 +19,7 @@ const Messages = db.define("messages", {
       model: Users,
     },
   },
-  consersationId: {
+  conversationId: {
     type: DataTypes.UUID,
     allowNull: false,
     field: "conversation_id",

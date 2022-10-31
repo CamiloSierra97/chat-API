@@ -7,10 +7,10 @@ const getAllConversations = async () => {
   return data;
 };
 
-const getConversationById = async (conversation_id) => {
+const getConversationById = async (conversationId) => {
   const data = await Conversations.findOne({
     where: {
-      id: conversation_id,
+      id: conversationId,
     },
   });
   return data;
@@ -26,23 +26,25 @@ const createConversation = async (data) => {
   return newConversation;
 };
 
-const updateConversation = async (conversation_id, data) => {
+const updateConversation = async (conversationId, data) => {
   const result = await Conversations.update(data, {
     where: {
-      id: conversation_id,
+      id: conversationId,
     },
   });
   return result;
 };
 
-const deleteConversation = async (conversation_id) => {
+const deleteConversation = async (conversationId) => {
   const data = await Conversations.destroy({
     where: {
-      id: conversation_id,
+      id: conversationId,
     },
   });
   return data;
 };
+
+
 
 module.exports = {
   getAllConversations,

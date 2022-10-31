@@ -32,4 +32,12 @@ router
     conversationServices.deleteConversation
   );
 
+router.route("/:conversation_id/participants").get().post().delete();
+
+router
+  .route("/:conversation_id/participants/:participant_id")
+  .get()
+  .post()
+  .delete();
+
 module.exports = router;

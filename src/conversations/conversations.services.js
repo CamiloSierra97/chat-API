@@ -12,10 +12,9 @@ const getAllConversations = (req, res) => {
 };
 
 const getConversationById = (req, res) => {
-  const conversation_id = req.params.conversation_id;
-  console.log(conversation_id);
+  const conversationId = req.params.conversation_id;
   conversationsControllers
-    .getConversationById(conversation_id)
+    .getConversationById(conversationId)
     .then((data) => {
       if (data) {
         res.status(200).json(data);
@@ -54,14 +53,14 @@ const createConversation = (req, res) => {
 };
 
 const updateConversation = (req, res) => {
-  const conversation_id = req.params.conversation_id;
+  const conversationId = req.params.conversation_id;
   const { title, imageUrl } = req.body;
   conversationsControllers
-    .updateConversation(conversation_id, { title, imageUrl })
+    .updateConversation(conversationId, { title, imageUrl })
     .then((data) => {
       if (data[0]) {
         res.status(200).json({
-          message: `User with ID ${conversation_id}, edited succesfully`,
+          message: `User with ID ${conversationId}, edited succesfully`,
         });
       } else {
         res.status(404).json({ message: "Invalid ID or missing data" });
@@ -73,9 +72,9 @@ const updateConversation = (req, res) => {
 };
 
 const deleteConversation = (req, res) => {
-  const conversation_id = req.params.conversation_id;
+  const conversationId = req.params.conversation_id;
   conversationsControllers
-    .deleteConversation(conversation_id)
+    .deleteConversation(conversationId)
     .then((data) => {
       if (data !== 0) {
         res.status(204).json();
