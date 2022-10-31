@@ -1,4 +1,6 @@
 const conversationsControllers = require("./conversations.controllers");
+//? Function to make creator as participant
+const participantControllers = require("../participants/participants.controllers");
 
 const getAllConversations = (req, res) => {
   conversationsControllers

@@ -2,6 +2,7 @@
 const Conversations = require("../models/conversations.models");
 const uuid = require("uuid");
 
+
 const getAllConversations = async () => {
   const data = await Conversations.findAll();
   return data;
