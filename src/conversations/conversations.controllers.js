@@ -1,7 +1,8 @@
 //? Dependencies
 const Conversations = require("../models/conversations.models");
+const Messages = require("../models/messages.models");
+const Users = require("../models/users.models");
 const uuid = require("uuid");
-
 
 const getAllConversations = async () => {
   const data = await Conversations.findAll();
@@ -13,6 +14,16 @@ const getConversationById = async (conversationId) => {
     where: {
       id: conversationId,
     },
+    include: [
+      {
+        model: Messages,
+        include: [
+          {
+            model: Users,
+          },
+        ],
+      },
+    ],
   });
   return data;
 };
@@ -44,8 +55,6 @@ const deleteConversation = async (conversationId) => {
   });
   return data;
 };
-
-
 
 module.exports = {
   getAllConversations,

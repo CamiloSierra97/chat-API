@@ -13,7 +13,7 @@ const getMessages = async (conversationId) => {
 const createMessage = async (data) => {
   const newMessage = await Messages.create({
     id: uuid.v4(),
-    senderId: data.userId,
+    userId: data.userId,
     conversationId: data.conversationId,
     message: data.message,
   });

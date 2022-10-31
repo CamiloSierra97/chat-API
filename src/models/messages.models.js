@@ -10,10 +10,10 @@ const Messages = db.define("messages", {
     primaryKey: true,
     allowNull: false,
   },
-  senderId: {
+  userId: {
     type: DataTypes.UUID,
     allowNull: false,
-    field: "sender_id",
+    field: "user_id",
     references: {
       key: "id",
       model: Users,
