@@ -17,6 +17,10 @@ const initModels = () => {
   Messages.belongsTo(Users);
   Users.hasMany(Messages);
 
+  //? Realtions between Users and Participants
+  Participants.belongsTo(Users);
+  Users.hasMany(Participants);
+
   //? Relations between Conversations and Participants
   Participants.belongsTo(Conversations);
   Conversations.hasMany(Participants);
