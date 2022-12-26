@@ -1,5 +1,5 @@
 const { Sequelize } = require("sequelize");
-const config = require('../config')
+const config = require("../config");
 
 //? Environment variables
 const db = new Sequelize({
@@ -8,7 +8,15 @@ const db = new Sequelize({
   username: config.db.username,
   password: config.db.password,
   database: config.db.dbName,
+  dialectOptions:
+    process.env.NODE_ENV === "production"
+      ? {
+          ssl: {
+            require: true,
+            rejectUnautorized: false,
+          },
+        }
+      : {},
 });
-
 
 module.exports = db;
