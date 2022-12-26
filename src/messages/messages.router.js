@@ -6,6 +6,10 @@ const messageServices = require("./messages.services");
 const passport = require("passport");
 require("../middlewares/auth.middleware")(passport);
 
+//? Routes
+
+//? /api/v1/messages
+
 router
   .route("/:conversation_id/messages")
   .get(

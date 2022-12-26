@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/users", usersRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/conversations", conversationsRouter);
-app.use("/api/v1/conversations", messagesRouter);
+app.use("/api/v1/messages", messagesRouter);
 
 app.listen(config.port, () => {
   console.log(`Server started at port ${config.port}`);
