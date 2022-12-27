@@ -48,8 +48,6 @@ app.get("/", (req, res) => {
     message: "Server OK!",
     auth: {
       endpoint: "https://chatapi-mc74.onrender.com/api/v1/auth/",
-      protected: false,
-      adminValidate: false,
       routes: [
         {
           path: "/login",
