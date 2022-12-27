@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
   res.status(200).json({
     message: "Server OK!",
     auth: {
-      endpoint: "https://chatapi-mc74.onrender.com/api/v1/auth/",
+      endpoint: "https://chatapi-mc74.onrender.com/api/v1/auth",
       routes: [
         {
           path: "/login",
