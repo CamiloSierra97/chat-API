@@ -46,10 +46,94 @@ initModels();
 app.get("/", (req, res) => {
   res.status(200).json({
     message: "Server OK!",
-    users: `https://chatapi-mc74.onrender.com/api/v1/users`,
-    conversations: `https://chatapi-mc74.onrender.com/api/v1/conversations`,
-    messages: `https://chatapi-mc74.onrender.com/api/v1/messages`,
-    participants: `https://chatapi-mc74.onrender.com/api/v1/participants`,
+    auth: {
+      endpoint: "https://chatapi-mc74.onrender.com/api/v1/auth/",
+      protected: false,
+      adminValidate: false,
+      routes: [
+        {
+          path: "/login",
+          verbs: ["post"],
+          protected: false,
+          adminValidate: false,
+        },
+        {
+          path: "/register",
+          verbs: ["post"],
+          protected: false,
+          adminValidate: false,
+        },
+      ],
+    },
+    users: {
+      endpoint: "https://chatapi-mc74.onrender.com/api/v1/users",
+      verbs: ["get"],
+      protected: true,
+      adminValidate: false,
+      routes: [
+        {
+          path: "/me",
+          verbs: ["get", "patch", "delete"],
+          protected: true,
+          adminValidate: false,
+        },
+        {
+          path: "/:id",
+          verbs: ["get", "patch", "delete"],
+          protected: true,
+          adminValidate: true,
+          protectedVerbs: ["patch", "delete"],
+        },
+      ],
+    },
+    conversations: {
+      endpoint: "https://chatapi-mc74.onrender.com/api/v1/conversations",
+      verbs: ["get", "post"],
+      protected: true,
+      adminValidate: false,
+      routes: [
+        {
+          path: "/:conversation_id",
+          verbs: ["get", "patch", "delete"],
+          protected: true,
+          adminValidate: false,
+        },
+      ],
+    },
+    messages: {
+      endpoint: "https://chatapi-mc74.onrender.com/api/v1/messages",
+      routes: [
+        {
+          path: "/:conversation_id/messages",
+          verbs: ["get", "post"],
+          protected: true,
+          adminValidate: false,
+        },
+        {
+          path: "/:conversation_id/messages/:message_id",
+          verbs: ["get", "delete"],
+          protected: true,
+          adminValidate: false,
+        },
+      ],
+    },
+    participants: {
+      endpoint: "https://chatapi-mc74.onrender.com/api/v1/participants",
+      routes: [
+        {
+          path: "/:conversation_id/participants",
+          verbs: ["get", "post", "delete"],
+          protected: true,
+          adminValidate: false,
+        },
+        {
+          path: "/:conversation_id/participants/:participant_id",
+          verbs: ["get", "post", "delete"],
+          protected: true,
+          adminValidate: false,
+        },
+      ],
+    },
   });
 });
 
